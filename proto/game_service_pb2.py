@@ -9,7 +9,6 @@ from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
 from google.protobuf import service as _service
 from google.protobuf import service_reflection
-from google.protobuf import descriptor_pb2
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
@@ -20,9 +19,10 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='game_service.proto',
   package='pluto',
+  syntax='proto2',
+  serialized_options=_b('\220\001\001'),
   serialized_pb=_b('\n\x12game_service.proto\x12\x05pluto\"\x06\n\x04Void\"\x1d\n\x0eRequestMessage\x12\x0b\n\x03msg\x18\x01 \x02(\t\"\x1e\n\x0fResponseMessage\x12\x0b\n\x03msg\x18\x01 \x02(\t2:\n\x0cIEchoService\x12*\n\x04\x65\x63ho\x12\x15.pluto.RequestMessage\x1a\x0b.pluto.Void2@\n\x0bIEchoClient\x12\x31\n\necho_reply\x12\x16.pluto.ResponseMessage\x1a\x0b.pluto.VoidB\x03\x90\x01\x01')
 )
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -40,8 +40,9 @@ _VOID = _descriptor.Descriptor(
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -63,15 +64,16 @@ _REQUESTMESSAGE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -93,15 +95,16 @@ _RESPONSEMESSAGE = _descriptor.Descriptor(
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
-      options=None),
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
   ],
-  options=None,
+  serialized_options=None,
   is_extendable=False,
+  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -112,6 +115,7 @@ _RESPONSEMESSAGE = _descriptor.Descriptor(
 DESCRIPTOR.message_types_by_name['Void'] = _VOID
 DESCRIPTOR.message_types_by_name['RequestMessage'] = _REQUESTMESSAGE
 DESCRIPTOR.message_types_by_name['ResponseMessage'] = _RESPONSEMESSAGE
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Void = _reflection.GeneratedProtocolMessageType('Void', (_message.Message,), dict(
   DESCRIPTOR = _VOID,
@@ -135,15 +139,14 @@ ResponseMessage = _reflection.GeneratedProtocolMessageType('ResponseMessage', (_
 _sym_db.RegisterMessage(ResponseMessage)
 
 
-DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\220\001\001'))
+DESCRIPTOR._options = None
 
 _IECHOSERVICE = _descriptor.ServiceDescriptor(
   name='IEchoService',
   full_name='pluto.IEchoService',
   file=DESCRIPTOR,
   index=0,
-  options=None,
+  serialized_options=None,
   serialized_start=100,
   serialized_end=158,
   methods=[
@@ -154,9 +157,36 @@ _IECHOSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_REQUESTMESSAGE,
     output_type=_VOID,
-    options=None,
+    serialized_options=None,
   ),
 ])
+_sym_db.RegisterServiceDescriptor(_IECHOSERVICE)
+
+DESCRIPTOR.services_by_name['IEchoService'] = _IECHOSERVICE
+
+
+_IECHOCLIENT = _descriptor.ServiceDescriptor(
+  name='IEchoClient',
+  full_name='pluto.IEchoClient',
+  file=DESCRIPTOR,
+  index=1,
+  serialized_options=None,
+  serialized_start=160,
+  serialized_end=224,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='echo_reply',
+    full_name='pluto.IEchoClient.echo_reply',
+    index=0,
+    containing_service=None,
+    input_type=_RESPONSEMESSAGE,
+    output_type=_VOID,
+    serialized_options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_IECHOCLIENT)
+
+DESCRIPTOR.services_by_name['IEchoClient'] = _IECHOCLIENT
 
 IEchoService = service_reflection.GeneratedServiceType('IEchoService', (_service.Service,), dict(
   DESCRIPTOR = _IECHOSERVICE,
@@ -168,27 +198,6 @@ IEchoService_Stub = service_reflection.GeneratedServiceStubType('IEchoService_St
   __module__ = 'game_service_pb2'
   ))
 
-
-
-_IECHOCLIENT = _descriptor.ServiceDescriptor(
-  name='IEchoClient',
-  full_name='pluto.IEchoClient',
-  file=DESCRIPTOR,
-  index=1,
-  options=None,
-  serialized_start=160,
-  serialized_end=224,
-  methods=[
-  _descriptor.MethodDescriptor(
-    name='echo_reply',
-    full_name='pluto.IEchoClient.echo_reply',
-    index=0,
-    containing_service=None,
-    input_type=_RESPONSEMESSAGE,
-    output_type=_VOID,
-    options=None,
-  ),
-])
 
 IEchoClient = service_reflection.GeneratedServiceType('IEchoClient', (_service.Service,), dict(
   DESCRIPTOR = _IECHOCLIENT,
