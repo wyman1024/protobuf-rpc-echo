@@ -15,14 +15,14 @@ LISTEN_PORT = 1888
 class MyEchoService(IEchoService):
 	
 	def echo(self, controller, request, done):
-		
+		_logger = logger.get_logger("GameServer")
 		rpc_channel = controller.rpc_channel
 		msg = request.msg
 		
 		response = ResponseMessage()
 		response.msg = "echo:"+msg
 		
-		print "response.msg", response.msg
+		_logger.info("response.msg %s", response.msg)
 		
 		# 此时，服务器是调用方，就调用stub.rpc，客户端时被调用方,实现rpc方法。
 		client_stub = IEchoClient_Stub(rpc_channel)

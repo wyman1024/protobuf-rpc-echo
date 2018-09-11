@@ -5,6 +5,7 @@ sys.path.append('../')
 from proto.game_service_pb2 import IEchoService_Stub,IEchoClient,RequestMessage
 from rpc.tcp_client import TcpClient
 import asyncore
+import logger
 
 LISTEN_IP = "127.0.0.1"
 LISTEN_PORT = 1888
@@ -12,7 +13,8 @@ LISTEN_PORT = 1888
 # 被调用方,接收调用方(stub)的rpc请求
 class MyEchoClientReply(IEchoClient):
 	def echo_reply(self, rpc_controller, request, done):
-		print "MyEchoClientReply:%s"%request.msg
+		_logger = logger.get_logger("GameServer")
+		_logger.info("MyEchoClientReply:%s"%request.msg)
 		
 
 if __name__ == "__main__":
